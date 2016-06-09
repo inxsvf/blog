@@ -66,7 +66,7 @@ Tendo em conta que, normalmente, a origem (0,0) do sistema de coordenadas do can
 
 #### Exemplo 2: Quadrado em movimento
 
-<iframe id="frame_A_skeleton_template" src="/snippets/01movingSquare.html" width="300" height="200" frameborder="0"></iframe>
+<iframe id="frame_A_skeleton_template" src="/blog/snippets/01movingSquare.html" width="300" height="200" frameborder="0"></iframe>
 
 ```javascript
 var interval,
