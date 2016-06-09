@@ -1,4 +1,9 @@
-Síntese de Som
+---
+layout: blog
+category: blog
+published: true
+title: Síntese de Som
+---
 
 A [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) é utilizada para o processamento e síntese de audio diretamente no browser.
 
