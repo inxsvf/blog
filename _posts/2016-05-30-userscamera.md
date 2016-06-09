@@ -9,6 +9,10 @@ Note-se que por questões de segurança, esta API só funciona através do proto
 
 #### Aceder à Câmara do Utilizador
 
+
+<iframe id="frame_A_skeleton_template" src="/blog/snippets/03camera.html" width="400" height="400" frameborder="0" style="margin: 20px;"></iframe>
+
+
 ```markup
 <script>
   var ctx, canvas, video;
@@ -46,7 +50,6 @@ Note-se que por questões de segurança, esta API só funciona através do proto
 	<canvas id="canvas" width="640" height="480"></canvas>
 </body>
 ```
-
 
 No início, colocaram-se as definições do costume, em que se acrescentou a do _video_, que corresponde ao elemento [_video_](https://developer.mozilla.org/en/docs/Web/HTML/Element/video) em que aparecerá o que se vê através da câmara do utilizador. Também definiu-se a função `errBack` para lidar com erros que apareçam ao aceder à câmara do utilizador, ou caso o utilizador rejeite a ligação.
 
