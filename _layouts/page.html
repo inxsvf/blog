@@ -2,9 +2,22 @@
 layout: default
 ---
 
-<div class='listing col6 pad4h margin3'>
-  <h2>{{page.title}}</h2>
-  <div class='prose'>
-    {{content}}
-  </div>
+<div class='container'>
+	<div class='colours col12 clearfix'>
+	  <div class='header col6 margin3 pad4h'>
+	    <div class='clearfix col12'>
+	      <div class='menu fr'>
+	        <a class='title-link {% if page.section == "blog" %}active{% endif %}' href='{{site.baseurl}}/'>WebSketch</a>
+	        <a class='about-link {% if page.url == "about/" %}active{% endif %}' href='{{site.baseurl}}/about'>Sobre ></a>
+	      </div>
+	      <h1 class='title'><a href='{{site.baseurl}}/'>{{page.title}}</a></h1>
+	    </div>
+	  </div>
+	</div>
+	<div class='listing col6 pad4h margin3'>
+	  <h2>{{page.title}}</h2>
+	  <div class='prose'>
+	    {{content}}
+	  </div>
+	</div>
 </div>
