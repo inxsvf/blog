@@ -1,6 +1,6 @@
 baseurl: /blog
 permalink: pretty
-markdown: rdiscount
+markdown: kramdown
 prose:
   rooturl: '_posts'
   siteurl: 'http://inxsvf.github.io/blog/'
