@@ -461,7 +461,7 @@ table {
 .listing .item {
   display:block;
   padding:2px 0;
-  border-bottom:1px solid #d4d7d9;
+  border-bottom:1px solid white;
   }
 
 .listing .item:hover {
@@ -475,7 +475,7 @@ table {
 
 
 .date {
-  color:#d4d7d9;
+  color:white;
   font-weight:normal;
   }
 
