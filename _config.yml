@@ -1,10 +1,10 @@
-baseurl: /websketcher
+baseurl: /websketch
 permalink: pretty
 markdown: kramdown
 prose:
   rooturl: '_posts'
-  siteurl: 'http://inxsvf.github.io/websketcher/'
-  relativeLinks: 'http://inxsvf.github.io/websketcher/links.jsonp'
+  siteurl: 'http://inxsvf.github.io/websketch/'
+  relativeLinks: 'http://inxsvf.github.io/websketch/links.jsonp'
   media: 'media'
   metadata:
     _posts:
