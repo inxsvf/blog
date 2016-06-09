@@ -43,7 +43,7 @@ table { border-collapse: collapse; border-spacing:0; }
 body,
 input,
 textarea {
-  color:#516066;
+  color:black;
   font:15px/1.67 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing:antialiased;
   }
@@ -94,7 +94,7 @@ p {
 
 /* Links */
 a {
-  color:#2099aa;
+  color:black;
   text-decoration:none;
   font-weight:bold;
   -webkit-transition:color 100ms;
@@ -108,11 +108,24 @@ a {
   a.active {
     color:#516066;
     }
+    .header a:hover{
+      text-decoration: underline;
+    }
+    a.title-link:hover,
+    .colour-link:hover {
+      -webkit-animation: pulse_bg 0.25s infinite alternate;
+      -moz-animation: pulse_bg 0.25s infinite alternate;
+      -o-transition: pulse_bg 0.25s infinite alternate;
+      transition: pulse_bg 0.25s infinite alternate;
+      background-color: currentColor;
+      text-decoration: none;
+    }
   .rss {
     color:#d4d7d9;
     }
     .rss:hover {
-      color:#516066;
+      color:#d4d7d9;
+      text-decoration: underline;
       }
 
 abbr {
@@ -310,18 +323,124 @@ table {
 
 /* Global Layout
 ------------------------------------------------------- */
+
+/* " + . + corzinhas + ' .. + */
+@-webkit-keyframes pulse_bg {
+  0% {background-color: #CCDBFC;}
+  10% {background-color: #4343F3;}
+  25% {background-color: #1111FF;}
+  45% {background-color: #CF61DC;}
+  70% {background-color: #F6F162;}
+  85% {background-color: #70F589;}
+  100% {background-color: #04AD7B;}
+}
+
+@-moz-keyframes pulse_bg {
+  0% {background-color: #CCDBFC;}
+  10% {background-color: #4343F3;}
+  25% {background-color: #1111FF;}
+  45% {background-color: #CF61DC;}
+  70% {background-color: #F6F162;}
+  85% {background-color: #70F589;}
+  100% {background-color: #04AD7B;}
+}
+
+@-o-keyframes pulse_bg {
+  0% {background-color: #CCDBFC;}
+  10% {background-color: #4343F3;}
+  25% {background-color: #1111FF;}
+  45% {background-color: #CF61DC;}
+  70% {background-color: #F6F162;}
+  85% {background-color: #70F589;}
+  100% {background-color: #04AD7B;}
+}
+
+@keyframes pulse_bg {
+  0% {background-color: #CCDBFC;}
+  10% {background-color: #4343F3;}
+  25% {background-color: #1111FF;}
+  45% {background-color: #CF61DC;}
+  70% {background-color: #F6F162;}
+  85% {background-color: #70F589;}
+  100% {background-color: #04AD7B;}
+}
+
+@-webkit-keyframes pulse_bd {
+  0% {border-color: #CCDBFC;}
+  10% {border-color: #4343F3;}
+  25% {border-color: #1111FF;}
+  45% {border-color: #CF61DC;}
+  70% {border-color: #F6F162;}
+  85% {border-color: #70F589;}
+  100% {border-color: #04AD7B;}
+}
+
+@-moz-keyframes pulse_bd {
+  0% {border-color: #CCDBFC;}
+  10% {border-color: #4343F3;}
+  25% {border-color: #1111FF;}
+  45% {border-color: #CF61DC;}
+  70% {border-color: #F6F162;}
+  85% {border-color: #70F589;}
+  100% {border-color: #04AD7B;}
+}
+
+@-o-keyframes pulse_bd {
+  0% {border-color: #CCDBFC;}
+  10% {border-color: #4343F3;}
+  25% {border-color: #1111FF;}
+  45% {border-color: #CF61DC;}
+  70% {border-color: #F6F162;}
+  85% {border-color: #70F589;}
+  100% {border-color: #04AD7B;}
+}
+
+@keyframes pulse_bd {
+  0% {border-color: #CCDBFC;}
+  10% {border-color: #4343F3;}
+  25% {border-color: #1111FF;}
+  45% {border-color: #CF61DC;}
+  70% {border-color: #F6F162;}
+  85% {border-color: #70F589;}
+  100% {border-color: #04AD7B;}
+}
+/* " + . + corzinhas + ' .. + */
+
 .container {
   max-width:1600px;
   margin:0 auto;
   overflow:hidden;
   }
 
+
 /* Global Style
 ------------------------------------------------------- */
+
+.colours {
+  -webkit-animation: pulse_bg 18s infinite alternate;
+  -moz-animation: pulse_bg 18s infinite alternate;
+  -o-transition: pulse_bg 18s infinite alternate;
+  transition: pulse_bg 18s infinite alternate;
+  background-color: #67FFA9;
+}
+.colours.container {
+  height: 100vh;
+}
+
 .heading,
 .header {
   padding:20px 0;
   }
+
+
+  .header .title-link{
+    color: white
+  } 
+
+  .header .about-link{
+    color: black
+  }
+
   .header .title {
     font-size:15px;
     line-height:1.67;
@@ -329,7 +448,7 @@ table {
     margin:0;
     }
     .header .title a {
-      color:#516066;
+      color: black;
       }
 
 .menu {
@@ -345,17 +464,16 @@ table {
   border-bottom:1px solid #d4d7d9;
   }
 
+.listing .item:hover {
+  color: black;
+  }
+
 .listing .month {
   color:#868f93;
   margin-top:20px;
   }
 
-.splash img {
-  background:#f0f0f0;
-  margin:0 auto;
-  display:block;
-  max-width:100%;
-  }
+
 .date {
   color:#d4d7d9;
   font-weight:normal;
