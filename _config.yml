@@ -3,8 +3,8 @@ permalink: pretty
 markdown: kramdown
 prose:
   rooturl: '_posts'
-  siteurl: 'https://inxsvf.github.io/blog/'
-  relativeLinks: 'https://inxsvf.github.io/blog/links.jsonp'
+  siteurl: 'http://inxsvf.github.io/blog/'
+  relativeLinks: 'http://inxsvf.github.io/blog/links.jsonp'
   media: 'media'
   metadata:
     _posts:
