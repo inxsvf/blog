@@ -7,8 +7,6 @@ title: Aceder à Câmara do Utilizador
 Para poder aceder à câmara (microfone, e/ou ecrã) do utilizador usa-se a [navigator.getUserMedia API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getUserMedia).
 Note-se que por questões de segurança, esta API só funciona através do protocolo [HTTPS](https://en.wikipedia.org/wiki/HTTPS), e se o utilizador der autorização para captar imagem (para poder testar localmente ler [este artigo](/simpleServer)).
 
-
-<iframe id="frame_A_skeleton_template" src="/snippets/03camera.html" width="320" height="500" frameborder="0"></iframe>
 #### Aceder à Câmara do Utilizador
 
 ```javascript
@@ -64,12 +62,15 @@ if (navigator.getUserMedia) {
 	alert('getUserMedia() is not supported in your browser');
 }
 ```
+
 Se se poder avançar, indica-se a componente a aceder, neste caso só ao à câmara, i.e. ao video: `{ "video": true }`, e ligamos a _stream_ da câmara do utilizador como fonte (_source_) do elemento `video` anterior:
+
 ```
 navigator.getUserMedia({ "video": true }, function(stream) {
 				video.src = window.URL.createObjectURL(stream);
 			}, errBack);
 ```
+
 Note-se que na definição do elemento `video`, colocou-se como pré-definição "autoplay", para começar assim que tenha imagem.
 
 
