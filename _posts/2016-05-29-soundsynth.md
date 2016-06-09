@@ -62,7 +62,7 @@ Para o desenho da onda, sempre que se atualiza o desenho (chama-se a função `d
 
 Nota: na demonstração seguinte o oscilador termina ao fim de 20s.
 
-<iframe id="frame_A_skeleton_template" src="/blog/snippets/02soundSynth.html" width="400" height="450" frameborder="0"></iframe>
+<iframe id="frame_A_skeleton_template" src="{{site.baseurl}}/snippets/02soundSynth.html" width="400" height="450" frameborder="0"></iframe>
 
 
 ```javascript
