@@ -1,4 +1,9 @@
-Primeiros Passos
+---
+layout: blog
+category: blog
+published: true
+title: Primeiros Passos
+---
 
 O elemento `<canvas>` define uma região onde se pode “desenhar”. Esta zona pode ser acedida através, por exemplo, de _JavaScript_ que a partir de várias funções é possível a criação de gráficos, animações e outras composições.
 
