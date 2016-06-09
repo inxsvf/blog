@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<!--link href="https://secure.assets.tumblr.com/assets/styles/global.css" rel="stylesheet"-->
+		<script type="application/javascript">
+
+		var ctx, canvas, video, videoObj;
+
+		function setup() {
+			canvas = document.getElementById("canvas");
+			ctx = canvas.getContext("2d");
+			video = document.getElementById("video");
+			videoObj = { "video": true };
+			
+
+			ctx.fillStyle = "blue";
+    		ctx.fillRect(0, 0, 320, 240);
+			ctx.fillStyle = "white";
+		    ctx.font = "16px Arial";
+		    ctx.fillText("Click here to snap picture!", 30, 70);
+
+			var errBack = function(error) {
+					console.log("Video capture error: ", error.code); 
+				};
+
+			navigator.getUserMedia  = navigator.getUserMedia ||
+	              navigator.webkitGetUserMedia ||
+	              navigator.mozGetUserMedia ||
+	              navigator.msGetUserMedia;
+
+
+			if (navigator.getUserMedia) {
+				navigator.getUserMedia(videoObj, function(stream) {
+					video.src = window.URL.createObjectURL(stream);
+				}, errBack);
+			} 
+		}
+
+		
+		function snap(){
+			ctx.drawImage(video, 0, 0, 320, 240);
+		}
+
+
+		</script>
+		<style>
+			canvas, video {
+				display: block;
+				position: relative;
+				width: 320px;
+				height:240px;
+				padding: 0;
+				margin: auto;
+			}
+			video{
+			}
+			canvas:hover {
+				cursor:pointer;
+			}
+
+		</style>
+	</head>
+	<body onload="setup()">
+		<video id="video" width="320" height="240" autoplay></video>
+		<canvas id="canvas" width="320" height="240" onclick="snap()"></canvas>
+	</body>
+</html>

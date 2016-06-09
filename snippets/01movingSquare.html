@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Web Sketch - Examples</title>
+		<script type="application/javascript">
+		var interval, ctx, canvas
+			width = 240, height = 150,
+			x = 0, y = 10;
+
+		function setup() {
+			canvas = document.getElementById("canvas");
+			canvas.width = width;
+			canvas.height = height;
+			ctx = canvas.getContext("2d");
+			
+			interval = setInterval(draw, 50);
+		}
+
+		function draw() {
+			//"clear" canvas, com alpha value para deixar um rasto
+			//senao seria ctx.clearRect = (0, 0, width, height);
+			ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+			ctx.fillRect (0, 0, width, height);
+
+			ctx.fillStyle = "rgb(0, 0, 255)";
+			ctx.fillRect (x, y, 60, 60);
+			x += 5;
+			if (x > width) x = 0;
+		}
+		</script>
+		<style>
+    		.tmblr-iframe {
+                display: none !important;
+            }
+            canvas {margin:10px; border: 1px solid black; }
+		</style>
+	</head>
+	<body onload="setup()">
+		<canvas id="canvas"></canvas>
+	</body>
+</html>

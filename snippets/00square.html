@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Intro to Canvas - Exemplo 02</title>
+    <meta name="description" content="More info: https://whatsthedealwithcomputers.tumblr.com/post/144090487164/intro-to-canvas-25">
+    <script type="text/javascript">
+      function setup() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        //quadrado azul:
+        ctx.fillStyle = "rgb(0, 0, 255)";
+        ctx.fillRect (10, 10, 60, 60);
+      }
+    </script>
+    <style>
+        .tmblr-iframe {
+            display: none !important;
+        }
+        canvas {margin:10px; border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="setup();">
+    <canvas id="canvas" width="150" height="150"></canvas>
+  </body>
+</html>

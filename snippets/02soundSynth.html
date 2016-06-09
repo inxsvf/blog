@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Web Sketch - Examples</title>
+        <script type="application/javascript">
+
+            var canvas, ctx,
+                oscillator,
+                audioCtx, analyser,
+                freq, waveType, bufferLength, dataArray,
+                width = 300, height = 300, y = height/2;
+
+            function setup() {
+                var canvas = document.getElementById('canvas');
+                var freq = document.getElementById('freq');
+                var waveType = document.getElementById('wave');
+
+                freq.value = 180;
+                waveType.value = 'sine';
+
+                ctx = canvas.getContext("2d");
+                ctx.strokeStyle = 'rgb(0, 0, 255)';
+
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioCtx.createAnalyser();
+
+                oscillator = audioCtx.createOscillator();
+                oscillator.connect(analyser);
+                analyser.connect(audioCtx.destination);
+                
+                bufferLength = analyser.frequencyBinCount;
+                dataArray = new Uint8Array(bufferLength);
+                analyser.getByteTimeDomainData(dataArray);
+
+                oscillator.type = waveType.options[waveType.selectedIndex].value;
+                oscillator.frequency.value = freq.value; // value in hertz
+
+            }
+
+            function draw() {
+                drawVisual = requestAnimationFrame(draw);
+
+                analyser.getByteTimeDomainData(dataArray);
+
+                ctx.clearRect(0, 0, width, height);
+                ctx.beginPath();
+
+                var sliceWidth = width / bufferLength;
+                var x = 0;
+
+                y = height/4 + (dataArray[0] / 128.0) * height/4;
+                ctx.moveTo(0, y);
+                
+                for(var i = 1; i != bufferLength; i++){
+                    x += sliceWidth;
+                    y = height/4 + (dataArray[i] / 128.0) * height/4;
+                    ctx.lineTo(x, y );
+                }
+                ctx.stroke();
+
+            }
+
+            function start(element){
+                element.disabled = true;
+                oscillator.start();
+                draw();
+                oscillator.stop(20);
+
+            }
+
+            function changeWaveType(element) {
+                oscillator.type = element.options[element.selectedIndex].value;
+            }
+
+            function changeFrequency(element) {
+                oscillator.frequency.value = element.value;
+            }
+        </script>
+        <style>
+            canvas {
+                display: block;
+                position: relative;
+                width: 300px;
+                height:300px;
+                padding: 0;
+                margin: 5px auto;
+            }
+            .form-group{
+                display: block;
+                position: relative;
+                width:  220px;
+                margin: 5px auto;
+            }
+            #start {
+                font-size: 20px;
+                display: block;
+                position: relative;
+                margin: 5px auto;
+
+            }
+        </style>
+    </head>
+    <body onload="setup();">
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <div class="form-group">
+            <label id="label-wave" for="wave">Tipo de onda:</label>
+            <select id="wave" name="select" onchange="changeWaveType(this);">
+                <option value="sine" selected>sine</option> 
+                <option value="square" >square</option>
+                <option value="sawtooth">sawtooth</option>
+                <option value="sawtooth">triangle</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label id="label-freq" for="freq">Frequência</label>
+            <input id="freq" type="range" min="20" max="500" step ="5" onchange="changeFrequency(this);"/>
+        </div>
+        <button id="start" onclick="start(this);">Start</button>
+    </body>
+</html>
