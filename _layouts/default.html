@@ -11,6 +11,11 @@ title: 'This is my Site Title'
   <link rel='shortcut icon' href='{{site.baseurl}}/img/favicon.ico' type='image/x-icon' />
   <link href='{{site.baseurl}}/site.css' rel='stylesheet' />
   <link href='{{site.baseurl}}/prism.css' rel='stylesheet' />
+  <script type="text/javascript">
+      var host = "inxsvf.github.io";
+      if ((host == window.location.host) && (window.location.protocol != "https:"))
+          window.location.protocol = "https";
+  </script>
 </head>
 <body>
     {{content}}
