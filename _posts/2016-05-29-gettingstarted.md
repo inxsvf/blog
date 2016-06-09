@@ -38,7 +38,7 @@ Em cima, colocou-se o elemento canvas com um tamanho predefinido (`width="300" h
 #### Exemplo 1: Desenhar um quadrado
 
 
-<iframe id="frame_A_skeleton_template" src="/snippets/00square.html" width="200" height="200" frameborder="0" style="margin: 20px;"></iframe>
+<iframe id="frame_A_skeleton_template" src="/blog/snippets/00square.html" width="200" height="200" frameborder="0" style="margin: 20px;"></iframe>
 
 ```javascript
 function setup() {
