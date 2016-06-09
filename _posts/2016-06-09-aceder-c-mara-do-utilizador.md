@@ -50,6 +50,8 @@ function snap(){
 No início, colocaram-se as definições do costume, em que se acrescentou a do _video_, que corresponde ao elemento [_video_](https://developer.mozilla.org/en/docs/Web/HTML/Element/video) em que aparecerá o que se vê através da câmara do utilizador. Também definiu-se a função `errBack` para lidar com erros que apareçam ao aceder à câmara do utilizador, ou caso o utilizador rejeite a ligação.
 
 Conforme o browser, a função `getUserMedia` pode não estar disponível (nos _browsers_ mais antigos) ou ter nome diferente, para resolver esse problema:
+
+
 ```JavaScript
 navigator.getUserMedia = navigator.getUserMedia ||
 	          navigator.webkitGetUserMedia ||
@@ -65,7 +67,7 @@ if (navigator.getUserMedia) {
 
 Se se poder avançar, indica-se a componente a aceder, neste caso só ao à câmara, i.e. ao video: `{ "video": true }`, e ligamos a _stream_ da câmara do utilizador como fonte (_source_) do elemento `video` anterior:
 
-```
+```javascript
 navigator.getUserMedia({ "video": true }, function(stream) {
 				video.src = window.URL.createObjectURL(stream);
 			}, errBack);
