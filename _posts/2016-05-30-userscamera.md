@@ -1,7 +1,7 @@
 ---
 layout: blog
 category: blog
-published: false
+published: true
 title: Aceder à Câmara do Utilizador
 ---
 Para poder aceder à câmara (microfone, e/ou ecrã) do utilizador usa-se a [navigator.getUserMedia API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getUserMedia).
