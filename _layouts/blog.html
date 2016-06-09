@@ -3,26 +3,30 @@ layout: default
 section: blog
 ---
 
-{% if page.splash %}
-  {% if page.splash contains 'http' %}
-    {% capture url %}{{page.splash}}{% endcapture %}
-  {% else %}
-    {% capture url %}{{site.baseurl}}{{page.splash}}/{% endcapture %}
-  {% endif %}
+  <div class='container'>
+    <div class='colours col12 clearfix'>
+      <div class='header col6 margin3 pad4h'>
+        <div class='clearfix col12'>
+          <div class='menu fr'>
+            <a class='title-link {% if page.section == "blog" %}active{% endif %}' href='{{site.baseurl}}/'>WebSketch</a>
+            <a class='about-link {% if page.url == "about/" %}active{% endif %}' href='{{site.baseurl}}/about'>Sobre ></a>
+          </div>
+          <h1 class='title'><a href='{{site.baseurl}}/'>{{page.title}}</a></h1>
+        </div>
+      </div>
+    </div>
+    <div class='listing col6 pad4h margin3'>
+      <div class='heading'>
+        <h1>{{page.title}}</h1><span class='date'>{{page.date | date:"%b %d"}}</span>
+      </div>
 
-  <div class='col12 splash'>
-    <img src='{{url}}' alt='' />
+      <div class='prose'>
+        {{content}}
+      </div>
+    </div>
+
+    {% include rss-link.html %}
   </div>
-{% endif %}
 
-<div class='listing col6 pad4h margin3'>
-  <div class='heading'>
-    <h1>{{page.title}}</h1><span class='date'>{{page.date | date:"%b %d"}}</span>
-  </div>
 
-  <div class='prose'>
-    {{content}}
-  </div>
-</div>
 
-{% include rss-link.html %}
