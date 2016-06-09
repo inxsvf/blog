@@ -10,7 +10,7 @@ Note-se que por questões de segurança, esta API só funciona através do proto
 #### Aceder à Câmara do Utilizador
 
 
-<iframe id="frame_A_skeleton_template" src="/blog/snippets/03camera.html" width="400" height="500" frameborder="0" style="margin: 20px;"></iframe>
+<iframe id="frame_A_skeleton_template" src="{{site.baseurl}}/snippets/03camera.html" width="400" height="500" frameborder="0" style="margin: 20px;"></iframe>
 
 
 ```markup
