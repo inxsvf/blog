@@ -5,7 +5,7 @@ published: true
 title: Aceder à Câmara do Utilizador
 ---
 Para poder aceder à câmara (microfone, e/ou ecrã) do utilizador usa-se a [navigator.getUserMedia API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getUserMedia).
-Note-se que por questões de segurança, esta API só funciona através do protocolo [HTTPS](https://en.wikipedia.org/wiki/HTTPS), e se o utilizador der autorização para captar imagem (para poder testar localmente ler [este artigo](/blog/simpleServer)).
+Note-se que por questões de segurança, esta API só funciona através do protocolo [HTTPS](https://en.wikipedia.org/wiki/HTTPS), e se o utilizador der autorização para captar imagem (para poder testar localmente ler [este artigo]({{site.baseurl}}/simpleServer)).
 
 #### Aceder à Câmara do Utilizador
 
