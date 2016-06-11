@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Web Sketch - Examples</title>
+        <script type="application/javascript">
+            var canvas, ctx, 
+                width = 500, height = 500,
+                delay = 33,
+                nParticles = 50, particleMaxRadius = 5;
+            
+            var particles = [];
+            var x = 100; var y = 100;
+
+            function setup() {
+                canvas = document.getElementById('canvas'),
+                ctx = canvas.getContext("2d");
+
+                for(var i = 0; i != nParticles; i++)
+                {
+                    particles.push(new create_particle());
+                }
+
+                setInterval(draw, delay);
+            } 
+
+            function draw()
+            {
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, width, height);
+
+                for(var t = 0; t != particles.length; t++)
+                {
+                    var p = particles[t];
+                    
+                    ctx.beginPath();
+                    ctx.fillStyle = p.color;
+                    ctx.arc(p.x, p.y, p.radius, Math.PI*2, false);
+                    ctx.fill();
+                                        
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+
+                    if (p.x + p.radius > width) p.vx = -p.vx;
+                    else if (p.x - p.radius < 0) p.vx = -p.vx;
+                    if (p.y + p.radius > height) p.vy = -p.vy;
+                    else if (p.y - p.radius < 0) p.vy = -p.vy;
+                }
+            }
+
+            function create_particle()
+            {
+                this.radius = Math.random()*particleMaxRadius;
+
+                //position
+                this.x = Math.random()*(width-this.radius);
+                this.y = Math.random()*(height-this.radius);
+                
+                //velocity
+                this.vx = Math.random()*40-20;
+                this.vy = Math.random()*40-20;
+
+                //color
+                var r = Math.floor(Math.random()*255), b = Math.floor(Math.random()*255);
+                this.color = "rgb("+r+",0,"+b+")";
+            }
+        </script>
+        <style>
+            canvas {
+                padding: 0;
+                margin: auto;
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+        </style>
+    </head>
+    <body onload="setup();">
+        <canvas id="canvas" width="500" height="500"></canvas>
+    </body>
+</html>
