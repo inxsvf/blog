@@ -19,9 +19,10 @@ Um conceito presente nesta API (e também comum a outras ferramentas de manipula
 ```javascript
 //Exemplo: criou-se um oscilador como fonte, que se ligou a um nó para 
 //controlo do volume, e por fim ligou-se este nó ao nó final que 
-//usualmente são as colunas do computador.
+//normalmente são as colunas do computador.
 var oscillator = audioCtx.createOscillator();
 var gainNode = audioCtx.createGain();
+
 oscillator.connect(gainNode);
 gainNode.connect(audioCtx.destination);
 ```
@@ -36,19 +37,20 @@ Para além do contexto, é necessário uma fonte de audio, pode ser:
 Para este exemplo, optou-se por utilizar um (oscilador)[https://en.wikibooks.org/wiki/Sound_Synthesis_Theory/Oscillators_and_Wavetables] para gerar um tom simples, que será ligado às colunas do computador, `context.destination`. Para poder ouvir o som, tem-se que se dar início ao oscilador. No exemplo seguinte, tambem se incluiu (na ultima linha) o pedido para o oscilador terminar ao fim de 3 segundos. 
 
 ```javascript
-analyser = audioCtx.createAnalyser();
-oscillator.connect(analyser);
-analyser.connect(audioCtx.destination);
+var oscillator = audioCtx.createOscillator();
+oscillator.connect(audioCtx.destination);
+oscillator.start();
+oscillator.stop(3);
 ```
 
 Neste exemplo tambem se pretende visualizar o sinal de audio, para isso vamos acrescentar um _nó_ ao nosso grafo: `AnalyserNode`. Este nó não modifica o sinal, mas permite utilizar esses dados. O _analyser_ extrai a frequência, onda, entre outros dados. 
 
 ```javascript
-var oscillator = audioCtx.createOscillator();
-var gainNode = audioCtx.createGain();
-oscillator.connect(gainNode);
-gainNode.connect(audioCtx.destination);
+var analyser = audioCtx.createAnalyser();
+oscillator.connect(analyser);
+analyser.connect(audioCtx.destination);
 ```
+
 O nó _analyser_ captura os dados audio atraves da [Transformada de Fourier](https://en.wikipedia.org/wiki/Fast_Fourier_transform) a uma determinada frequência definida pela propriedade `AnalyserNode.fft` (por omissão 2048Hz). Existem diversos métodos para capturar diferentes tipos de dados, neste caso utilzou-se: `AnalyserNode.getByteTimeDomainData()`, devolve um array de inteiros (8bit), (Uint8Array)[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays].
 
 ```javascript
@@ -56,9 +58,10 @@ bufferLength = analyser.frequencyBinCount;
 dataArray = new Uint8Array(bufferLength);
 analyser.getByteTimeDomainData(dataArray);
 ```
-Criou-se um _array_ Uint8Array, de tamanho determinado pelo `AnalyserNode.frequencyBinCount` e preencheu-se esse array com os dados lidos pelo _analyser_ atraves de `AnalyserNode.getByteTimeDomainData(dataArray)`.
 
-Para o desenho da onda, sempre que se atualiza o desenho (chama-se a função `draw()`), tem de se atualizar os dados do `dataArray`, ou seja, tem que que se ler os dados que passam do oscilador para o _analyser_ atraves da função `AnalyserNode.getByteTimeDomainData(dataArray)`. Após essa atualização, tem de se percorrer todos esses valores, para atualizar o valor de `y` (o valor de `x` corresponde a uma divisão da largura do canvas em partes iguais).
+Então, aqui criou-se um _array_ Uint8Array, de tamanho determinado pelo `AnalyserNode.frequencyBinCount` e preencheu-se esse array com os dados lidos pelo _analyser_ atraves de `AnalyserNode.getByteTimeDomainData(dataArray)`.
+
+Para o desenho da onda, sempre que se atualiza o desenho (chama-se a função `draw()`), tem de se atualizar os dados do `dataArray`, ou seja, tem que se ler os dados que passam do oscilador para o _analyser_ atraves da função `AnalyserNode.getByteTimeDomainData(dataArray)`. Após essa atualização, tem de se percorrer todos esses valores, para atualizar o valor de `y` (o valor de `x` corresponde a uma divisão da largura do canvas em partes iguais).
 
 Nota: na demonstração seguinte o oscilador termina ao fim de 20s.
 
